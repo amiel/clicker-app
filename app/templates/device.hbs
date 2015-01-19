@@ -5,7 +5,7 @@
 
 <div {{bind-attr class=":content-block changed:flash"}}>
 
-  {{#if sessionStartedAt}}
+  {{#if running}}
     <p><a {{action "stopSession"}} class="button button-fill color-red">Stop Session</a></p>
   {{else}}
     <p><a {{action "startSession"}} class="button button-fill">Start Session</a></p>
@@ -17,11 +17,33 @@
   <p>Clicks:</p>
 
   <p>
-    {{#each message in messages}}
-      {{message.time}}<br>
+    {{#each click in currentSession.clicks}}
+      {{click.time}}<br>
     {{/each}}
   </p>
 </div>
+
+<div class="content-block-title">Sessions</div>
+
+<div class="list-block">
+  <ul>
+    {{#each session in sessions}}
+      <li>
+        <div class="item-content">
+          <div class="item-inner">
+            <div class="item-title">
+              {{session.durationInSeconds}} seconds
+            </div>
+            <div class="item-after">
+              {{session.numberOfClicks}} &nbsp;clicks
+            </div>
+          </div>
+        </div>
+      </li>
+    {{/each}}
+  </ul>
+</div>
+
 
 
 {{outlet}}

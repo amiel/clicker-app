@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-import { stringToBytes, bytesToString } from "clicker-app/helpers/string-encoding";
+import { bytesToString } from "clicker-app/helpers/string-encoding";
 
 /* global ble */
 
@@ -47,7 +47,7 @@ export default Ember.Route.extend({
 
   received: function(string) {
     if (this.get('controller')) {
-      this.get('controller.messages').pushObject({
+      this.get('controller').receivedMessage({
         string: string,
         time: new Date()
       });
