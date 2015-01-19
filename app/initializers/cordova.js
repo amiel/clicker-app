@@ -1,4 +1,4 @@
-import { stringToBytes, bytesToString } from "ember-cli-cordova-test/helpers/string-encoding";
+import { stringToBytes } from "clicker-app/helpers/string-encoding";
 
 export function initialize(container, application) {
   // application.inject('route', 'foo', 'service:foo');
@@ -20,15 +20,15 @@ export function initialize(container, application) {
     };
 
     window.ble = {
-      scan: function(service, timeout, onSuccess, onError) {
+      scan: function(service, timeout, onSuccess /*, onError */) {
         window.setTimeout(function() {
           onSuccess(stubDevice);
         }, 500);
       },
-      connect: function(id, onConnect, onError) {
+      connect: function(id, onConnect /*, onError */) {
         onConnect(stubDevice);
       },
-      notify: function(id, service, characteristic, onData, onError) {
+      notify: function(id, service, characteristic, onData /*, onError */) {
         var callback = onData;
         var doNotify = function() {
           window.ble.notifyTimer = setTimeout(doNotify, Math.random() * 10000);
@@ -40,7 +40,7 @@ export function initialize(container, application) {
       writeWithoutResponse: function(id, service, characteristic, data, success, failure) {
         console.log("writeWithoutResponse", id, service, characteristic, data, success, failure);
       },
-      disconnect: function(id, onSuccess, onError) {
+      disconnect: function(id, onSuccess /*, onError */) {
         window.clearTimeout(window.ble.notifyTimer);
         onSuccess();
       }

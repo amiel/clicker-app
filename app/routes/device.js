@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-import { stringToBytes, bytesToString } from "ember-cli-cordova-test/helpers/string-encoding";
+import { stringToBytes, bytesToString } from "clicker-app/helpers/string-encoding";
 
 /* global ble */
 
