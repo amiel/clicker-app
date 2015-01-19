@@ -1,0 +1,22 @@
+
+<div class="content-block-title">
+  {{name}}
+</div>
+
+<div class="content-block">
+
+  <p><a {{action "sendData"}} class="button button-fill">SEND DATA!</a></p>
+  <p><a {{action "clear"}} class="button button-fill color-red">Clear log</a></p>
+  <p><a {{action "disconnect"}} class="button button-fill color-gray">Disconnect</a></p>
+
+  <p>Messages:</p>
+
+  <p>
+    {{#each message in messages}}
+      {{message.time}}: {{message.string}}<br>
+    {{/each}}
+  </p>
+</div>
+
+
+{{outlet}}

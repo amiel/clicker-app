@@ -1,5 +1,22 @@
-<h1>Welcome to ember-cli-cordova!</h1>
+<div class="statusbar-overlay"></div>
 
-{{liquid-outlet name="main"}}
+<div class="views">
+  <div class="view view-main">
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="center">Clicker App</div>
+      </div>
+    </div>
+
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          {{liquid-outlet name="main"}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 {{liquid-outlet modal}}

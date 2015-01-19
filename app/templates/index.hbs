@@ -1,0 +1,32 @@
+<div class="content-block-title">Devices</div>
+
+<div class="list-block">
+
+  <ul>
+    {{#each device in devices}}
+      <li>
+        {{#link-to "device" device.id class="item-link item-content"}}
+          <div class="item-inner">
+            <div class="item-title">
+              {{device.name}}
+            </div>
+          </div>
+        {{/link-to}}
+      </li>
+    {{else}}
+      <li><div class="item-content"><div class="item-inner"><div class="item-title">
+        No devices found
+      </div></div></div></li>
+    {{/each}}
+
+  </ul>
+
+  <div class="list-block-label">
+    {{#if loading}}
+      <div class="preloader"></div>
+    {{else}}
+      <a {{action "refresh"}} class="button">Refresh</a>
+    {{/if}}
+  </div>
+</div>
+
