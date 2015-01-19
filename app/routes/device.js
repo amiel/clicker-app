@@ -55,13 +55,6 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    sendData: function() {
-      var failure = function() { console.log("Failed writing data to the digispark hardware"); };
-      var success = function() { console.log("WE SENT SOME DATATATATAS"); };
-
-      var data = stringToBytes("OH HAI");
-      ble.writeWithoutResponse(this.get('deviceId'), digispark.serviceUUID, digispark.txCharacteristic, data, success, failure);
-    },
     clear: function() {
       this.set('controller.messages', []);
     },

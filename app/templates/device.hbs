@@ -3,17 +3,22 @@
   {{name}}
 </div>
 
-<div class="content-block">
+<div {{bind-attr class=":content-block changed:flash"}}>
 
-  <p><a {{action "sendData"}} class="button button-fill">SEND DATA!</a></p>
-  <p><a {{action "clear"}} class="button button-fill color-red">Clear log</a></p>
-  <p><a {{action "disconnect"}} class="button button-fill color-gray">Disconnect</a></p>
+  {{#if sessionStartedAt}}
+    <p><a {{action "stopSession"}} class="button button-fill color-red">Stop Session</a></p>
+  {{else}}
+    <p><a {{action "startSession"}} class="button button-fill">Start Session</a></p>
+  {{/if}}
 
-  <p>Messages:</p>
+  <p><a {{action "clear"}} class="button color-gray">Clear log</a></p>
+  <p><a {{action "disconnect"}} class="button color-red">Disconnect</a></p>
+
+  <p>Clicks:</p>
 
   <p>
     {{#each message in messages}}
-      {{message.time}}: {{message.string}}<br>
+      {{message.time}}<br>
     {{/each}}
   </p>
 </div>
