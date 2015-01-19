@@ -19,6 +19,12 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
+    <feature name="BLE">
+        <param name="ios-package" onload="true" value="BLECentralPlugin" />
+    </feature>
+    <feature name="Console">
+        <param name="ios-package" value="CDVLogger" />
+    </feature>
     <name>ClickerApp</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -28,4 +34,5 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <preference name="DisallowOverscroll" value="true" />
 </widget>
