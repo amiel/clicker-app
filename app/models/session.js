@@ -9,7 +9,7 @@ export default Ember.Object.extend({
   durationInSeconds: Ember.computed('startAt', 'stopAt', function() {
     var start = this.get('startAt');
     var stop = this.get('stopAt');
-    if (!(start && stop)) return;
+    if (!(start && stop)) { return; }
 
     return (stop - start) / 1000;
   }),

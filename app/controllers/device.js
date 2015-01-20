@@ -17,7 +17,7 @@ export default Ember.ObjectController.extend({
   },
 
   receivedMessage: function(message) {
-    if (this.get('standby')) return;
+    if (this.get('standby')) { return; }
 
     this.get('currentSession').addMessage(message);
   },
