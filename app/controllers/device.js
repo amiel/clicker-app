@@ -1,8 +1,6 @@
 import Ember from 'ember';
-import Session from "clicker-app/models/session";
 
 export default Ember.ObjectController.extend({
-  sessions: [],
   currentSession: null,
 
   running: Ember.computed.bool('currentSession'),
@@ -19,18 +17,19 @@ export default Ember.ObjectController.extend({
   receivedMessage: function(message) {
     if (this.get('standby')) { return; }
 
-    this.get('currentSession').addMessage(message);
+    this.get('currentSession').addClick(message.time);
   },
 
   actions: {
     startSession: function() {
-      var session = Session.create();
+      var session = this.store.createRecord('session', {
+        startAt: new Date()
+      });
       this.set('currentSession', session);
     },
     stopSession: function() {
       var session = this.get('currentSession');
       session.stop();
-      this.get('sessions').pushObject(session);
       this.set('currentSession', null);
     }
   }

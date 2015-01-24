@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { initialize } from 'ember-cli-cordova-test/initializers/cordova';
+import { initialize } from 'clicker-app/initializers/cordova';
 
 var container, application;
 

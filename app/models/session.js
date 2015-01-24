@@ -1,9 +1,12 @@
 import Ember from 'ember';
+import DS from 'ember-data';
+var attr = DS.attr;
+var hasMany = DS.hasMany;
 
-export default Ember.Object.extend({
-  startAt: null,
-  stopAt: null,
-  clicks: null,
+export default DS.Model.extend({
+  startAt: attr('date'),
+  stopAt: attr('date'),
+  clicks: hasMany('clicks'),
 
   numberOfClicks: Ember.computed.alias('clicks.length'),
   durationInSeconds: Ember.computed('startAt', 'stopAt', function() {
@@ -11,20 +14,16 @@ export default Ember.Object.extend({
     var stop = this.get('stopAt');
     if (!(start && stop)) { return; }
 
-    return (stop - start) / 1000;
+    return Math.round((stop - start) / 1000);
   }),
-
-  setup: function() {
-    this.set('clicks', []);
-    this.set('startAt', new Date());
-  }.on('init'),
 
   stop: function() {
     this.set('stopAt', new Date());
+    this.get('clicks').forEach(function(click) { click.save(); });
+    this.save();
   },
 
-  addMessage: function(message) {
-    this.get('clicks').pushObject(message);
+  addClick: function(time) {
+    this.get('clicks').createRecord({ time: time });
   }
-
 });

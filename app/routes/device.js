@@ -6,9 +6,9 @@ import { bytesToString } from "clicker-app/helpers/string-encoding";
 
 // this is digispark UART service
 var digispark = {
-    serviceUUID: "ffe0",
-    txCharacteristic: "ffe1",
-    rxCharacteristic: "ffe1"
+  serviceUUID: "ffe0",
+  txCharacteristic: "ffe1",
+  rxCharacteristic: "ffe1"
 };
 
 var genericError = function(error) {
@@ -17,8 +17,25 @@ var genericError = function(error) {
 
 export default Ember.Route.extend({
   model: function(params) {
+    var store = this.store;
+    return Ember.RSVP.hash({
+      device: this.connectBLE(params.id),
+      sessions: store.find('click').then(function() { return store.find('session'); })
+    });
+  },
+
+  setupController: function(controller, model, transition) {
+    this._super(controller, model.device, transition);
+    controller.set('sessions', model.sessions);
+  },
+
+  // afterModel: function(device, transition, params) {
+  //   var self = this;
+  //   console.log("This is afterModel and id is:" + this.get('deviceId'));
+  // },
+
+  connectBLE: function(deviceId) {
     var self = this;
-    var deviceId = params.id;
     this.set('deviceId', deviceId);
     console.log("MODEL id=" + deviceId);
 
@@ -39,18 +56,9 @@ export default Ember.Route.extend({
       console.log("did call connect");
     });
   },
-
-  // afterModel: function(device, transition, params) {
-  //   var self = this;
-  //   console.log("This is afterModel and id is:" + this.get('deviceId'));
-  // },
-
-  received: function(string) {
+  received: function(/* string */) {
     if (this.get('controller')) {
-      this.get('controller').receivedMessage({
-        string: string,
-        time: new Date()
-      });
+      this.get('controller').receivedMessage({ time: new Date() });
     }
   },
 
