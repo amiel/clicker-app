@@ -5,7 +5,7 @@
   <ul>
     {{#each session in sessions}}
       <li>
-        <div class="item-content">
+        {{#link-to "session" session.id class="item-content item-link"}}
           <div class="item-inner">
             <div class="item-title">
               {{format-time session.startAt}}
@@ -14,7 +14,7 @@
               {{format-duration session.duration}}
             </div>
           </div>
-        </div>
+        {{/link-to}}
       </li>
     {{/each}}
   </ul>
