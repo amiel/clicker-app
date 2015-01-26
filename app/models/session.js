@@ -9,13 +9,20 @@ export default DS.Model.extend({
   clicks: hasMany('clicks'),
 
   numberOfClicks: Ember.computed.alias('clicks.length'),
-  durationInSeconds: Ember.computed('startAt', 'stopAt', function() {
+
+  durationInSeconds: Ember.computed('duration', function() {
+    var duration = this.get('duration');
+    return duration ? Math.round(duration / 1000) : undefined;
+  }),
+
+  duration: Ember.computed('startAt', 'stopAt', function() {
     var start = this.get('startAt');
     var stop = this.get('stopAt');
     if (!(start && stop)) { return; }
 
-    return Math.round((stop - start) / 1000);
+    return (stop - start);
   }),
+
 
   stop: function() {
     this.set('stopAt', new Date());

@@ -6,7 +6,11 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route("devices");
   this.route("device", { path: ":id" });
+
+  this.route("session");
+  this.route("sessions");
 });
 
 export default Router;
