@@ -8,6 +8,8 @@ export default DS.Model.extend({
   stopAt: attr('date'),
   clicks: hasMany('clicks'),
 
+  done: Ember.computed.bool('stopAt'),
+
   numberOfClicks: Ember.computed.alias('clicks.length'),
 
   durationInSeconds: Ember.computed('duration', function() {
@@ -22,7 +24,6 @@ export default DS.Model.extend({
 
     return (stop - start);
   }),
-
 
   stop: function() {
     this.set('stopAt', new Date());

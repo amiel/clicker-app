@@ -1,14 +1,19 @@
 import Ember from 'ember';
 
+var C = Ember.computed;
+
 export default Ember.ObjectController.extend({
+  needs: 'sessions'.w(),
   currentSession: null,
 
-  running: Ember.computed.bool('currentSession'),
-  standby: Ember.computed.not('running'),
+  running: C.bool('currentSession'),
+  standby: C.not('running'),
+
+  sessions: C.alias('controllers.sessions.sessions'),
 
   backgroundEffect: function() {
     this.set('changed', true);
-    Ember.run.later(this, 'resetChanged', 900);
+    Ember.run.later(this, 'resetChanged', 600);
   }.observes('currentSession.numberOfClicks'),
   resetChanged: function() {
     this.set('changed', false);

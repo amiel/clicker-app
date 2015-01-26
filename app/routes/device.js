@@ -26,7 +26,7 @@ export default Ember.Route.extend({
 
   setupController: function(controller, model, transition) {
     this._super(controller, model.device, transition);
-    controller.set('sessions', model.sessions);
+    this.controllerFor('sessions').set('model', model.sessions);
   },
 
   // afterModel: function(device, transition, params) {
