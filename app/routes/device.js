@@ -19,7 +19,7 @@ export default Ember.Route.extend({
   model: function(params) {
     var store = this.store;
     return Ember.RSVP.hash({
-      device: this.connectBLE(params.id),
+      device: this.connectBLE(params.device_id),
       sessions: store.find('click').then(function() { return store.find('session'); })
     });
   },
