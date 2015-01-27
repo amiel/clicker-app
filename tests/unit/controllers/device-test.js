@@ -4,8 +4,7 @@ import {
 } from 'ember-qunit';
 
 moduleFor('controller:device', 'DeviceController', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  needs: ['controller:sessions']
 });
 
 // Replace this with your real tests.
