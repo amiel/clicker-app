@@ -13,6 +13,11 @@ export default DS.Model.extend({
 
   numberOfClicks: Ember.computed.alias('clicks.length'),
 
+  clicksPerMinute: Ember.computed('durationInSeconds', 'numberOfClicks', function() {
+    var minutes = this.get('durationInSeconds') / 60;
+    return (this.get('numberOfClicks') / minutes).toFixed(2);
+  }),
+
   durationInSeconds: Ember.computed('duration', function() {
     var duration = this.get('duration');
     return duration ? Math.round(duration / 1000) : undefined;

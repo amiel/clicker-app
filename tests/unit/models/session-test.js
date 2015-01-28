@@ -43,3 +43,21 @@ test('it has clicks', function() {
 
   equal(model.get('clicks.firstObject.time'), time);
 });
+
+test('it has clicks per minute', function() {
+  var model = this.subject({
+    startAt: new Date(1422134294208),
+    stopAt: new Date(1422134317576)
+  });
+
+  var time = new Date(1422134294209);
+
+  Ember.run(function() {
+    model.addClick(time);
+    model.addClick(time);
+    model.addClick(time);
+    model.addClick(time);
+  });
+
+  equal(model.get('clicksPerMinute'), 10.43);
+});
