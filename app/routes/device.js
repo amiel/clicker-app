@@ -56,7 +56,8 @@ export default Ember.Route.extend({
       console.log("did call connect");
     });
   },
-  received: function(/* string */) {
+  received: function(string) {
+    console.log("received BLE message=", Ember.inspect(string));
     if (this.get('controller')) {
       this.get('controller').receivedMessage({ time: new Date() });
     }

@@ -28,7 +28,8 @@ export default Ember.ObjectController.extend({
   actions: {
     startSession: function() {
       var session = this.store.createRecord('session', {
-        startAt: new Date()
+        startAt: new Date(),
+        name: this.get('sessionName')
       });
       this.set('currentSession', session);
     },

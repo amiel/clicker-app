@@ -1,28 +1,53 @@
 
-<div class="content-block-title">
-  {{name}}
+<div {{bind-attr class="changed:flash"}}>
+
+  <div class="content-block-title">
+    {{name}}
+  </div>
+
+  <div class="list-block inset">
+    <ul>
+      <li>
+        <div class="item-content">
+          <div class="item-inner">
+            <div class="item-title label">Name</div>
+
+            <div class="item-input">
+              {{input value=sessionName placeholder="Name your session"}}
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <p>
+      {{#if running}}
+        <a {{action "stopSession"}} class="button button-fill color-red">Stop Session</a>
+      {{else}}
+        <a {{action "startSession"}} class="button button-fill">Start Session</a>
+      {{/if}}
+    </p>
+
+    <p><a {{action "disconnect"}} class="button color-red">Disconnect</a></p>
+
+  </div>
+
+
+  <div class="content-block">
+
+    <p>Clicks:</p>
+
+    <p>
+      {{#each click in currentSession.clicks}}
+        {{click.time}}<br>
+      {{/each}}
+    </p>
+  </div>
+
+  <div class="content-block-title">Sessions</div>
+  <div class="list-block inset">
+    {{partial 'sessions'}}
+  </div>
+
+  {{outlet}}
 </div>
-
-<div {{bind-attr class=":content-block changed:flash"}}>
-
-  {{#if running}}
-    <p><a {{action "stopSession"}} class="button button-fill color-red">Stop Session</a></p>
-  {{else}}
-    <p><a {{action "startSession"}} class="button button-fill">Start Session</a></p>
-  {{/if}}
-
-  <p><a {{action "clear"}} class="button color-gray">Clear log</a></p>
-  <p><a {{action "disconnect"}} class="button color-red">Disconnect</a></p>
-
-  <p>Clicks:</p>
-
-  <p>
-    {{#each click in currentSession.clicks}}
-      {{click.time}}<br>
-    {{/each}}
-  </p>
-</div>
-
-{{partial 'sessions'}}
-
-{{outlet}}

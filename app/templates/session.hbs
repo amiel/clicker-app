@@ -1,7 +1,82 @@
 
-{{format-time startAt}}
-{{format-time stopAt}}
-{{numberOfClicks}}
-{{format-duration duration}}
+
+<div class="list-block">
+  <ul>
+
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title">
+            Session Name
+          </div>
+          <div class="item-after">
+            {{name}}
+          </div>
+        </div>
+      </div>
+    </li>
+
+
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title">
+            Started at
+          </div>
+          <div class="item-after">
+            {{format-time startAt}}
+          </div>
+        </div>
+      </div>
+    </li>
+
+
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title">
+            Stopped at
+          </div>
+          <div class="item-after">
+            {{format-time stopAt}}
+          </div>
+        </div>
+      </div>
+    </li>
+
+
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title">
+            Duration
+          </div>
+          <div class="item-after">
+            {{format-duration duration}}
+          </div>
+        </div>
+      </div>
+    </li>
+
+
+    <li>
+      <div class="item-content">
+        <div class="item-inner">
+          <div class="item-title">
+            Clicks
+          </div>
+          <div class="item-after">
+            {{numberOfClicks}}
+          </div>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+</div>
+
+
+
+<a {{action "back"}} class="button">Back</a>
 
 {{outlet}}

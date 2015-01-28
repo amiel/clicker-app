@@ -4,6 +4,7 @@ var attr = DS.attr;
 var hasMany = DS.hasMany;
 
 export default DS.Model.extend({
+  name: attr(),
   startAt: attr('date'),
   stopAt: attr('date'),
   clicks: hasMany('clicks'),
