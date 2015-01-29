@@ -6,8 +6,10 @@
       <div class="navbar-inner">
         <div class="left">
           {{#if backButton}}
-            <i class="icon icon-back"></i>
-            <a {{action "back"}} class="link">Back</a>
+            <a {{action "back"}} class="link">
+              <i class="icon icon-back"></i>
+              <span>Back</span>
+            </a>
           {{/if}}
         </div>
         <div class="center">Clicker App</div>
