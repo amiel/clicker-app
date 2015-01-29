@@ -23,10 +23,15 @@
 
   <div class="list-block-label">
     {{#if loading}}
-      <div class="preloader"></div>
+      <div class="preloader center"></div>
     {{else}}
       <a {{action "refresh"}} class="button">Refresh</a>
     {{/if}}
   </div>
+
+  <div class="list-block-label">
+    <a {{action "back"}} class="button color-gray">Back</a>
+  </div>
+
 </div>
 
