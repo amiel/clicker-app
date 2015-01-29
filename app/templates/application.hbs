@@ -4,7 +4,14 @@
   <div class="view view-main">
     <div class="navbar">
       <div class="navbar-inner">
+        <div class="left">
+          {{#if backButton}}
+            <i class="icon icon-back"></i>
+            <a {{action "back"}} class="link">Back</a>
+          {{/if}}
+        </div>
         <div class="center">Clicker App</div>
+        <div class="right">&nbsp;</div>
       </div>
     </div>
 

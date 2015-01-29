@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+
   actions: {
     back: function() {
       history.back();
@@ -22,6 +23,10 @@ export default Ember.Route.extend({
 
     openLink: function(url) {
       window.open(url, '_system');
+    },
+
+    willTransition: function(/* transition */) {
+      this.controllerFor('application').set('backButton', false);
     }
   }
 });

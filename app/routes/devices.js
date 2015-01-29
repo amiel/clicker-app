@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import BackButtonRoute from 'clicker-app/mixins/back-button-route';
 
 /* global ble */
 
@@ -11,7 +12,7 @@ var digispark = {
 
 var scanTimeout = 2;
 
-export default Ember.Route.extend({
+export default Ember.Route.extend(BackButtonRoute, {
 
   model: function() {
     var devices = [];
