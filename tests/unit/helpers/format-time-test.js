@@ -12,7 +12,7 @@ test('it works', function() {
 });
 
 
-test('it works', function() {
+test('it formats dates with a single initial digit', function() {
   var time = new Date(978364800000);
   var result = formatTime(time);
 

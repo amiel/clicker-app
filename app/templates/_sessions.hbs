@@ -1,4 +1,6 @@
 <ul>
+  <li class="list-group-title">{{format-date sessions.firstObject.startAt}}</li>
+
   {{#each session in sessions}}
     <li>
       {{#link-to "session" session.id class="item-content item-link"}}
