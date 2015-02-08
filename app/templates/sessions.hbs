@@ -6,7 +6,11 @@
 
 <div class="content-block-title">Sessions</div>
 <div class="list-block">
-  {{partial 'sessions'}}
+  {{#each sessions in sessionsGroupedByDay}}
+    <div class="list-group">
+      {{partial 'sessions'}}
+    </div>
+  {{/each}}
 </div>
 
 {{outlet}}
