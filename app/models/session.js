@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import { formatDate } from 'clicker-app/helpers/format-date';
+
 var attr = DS.attr;
 var hasMany = DS.hasMany;
 
@@ -16,6 +18,13 @@ export default DS.Model.extend({
   clicksPerMinute: Ember.computed('durationInSeconds', 'numberOfClicks', function() {
     var minutes = this.get('durationInSeconds') / 60;
     return (this.get('numberOfClicks') / minutes).toFixed(2);
+  }),
+
+  day: Ember.computed('startAt', function() {
+    var start = this.get('startAt');
+    if (!start) { return; }
+
+    return formatDate(this.get('startAt'));
   }),
 
   durationInSeconds: Ember.computed('duration', function() {
@@ -41,3 +50,5 @@ export default DS.Model.extend({
     this.get('clicks').createRecord({ time: time });
   }
 });
+
+

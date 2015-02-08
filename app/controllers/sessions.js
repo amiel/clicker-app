@@ -7,5 +7,5 @@ export default Ember.ArrayController.extend({
     return this.get('model').filterBy('stopAt').sortBy('stopAt').reverse();
   }),
 
-  sessionsGroupedByDay: groupBy('model', 'date')
+  sessionsGroupedByDay: groupBy('sessions', 'day')
 });

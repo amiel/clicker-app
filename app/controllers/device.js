@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+import { formatDate } from 'clicker-app/helpers/format-date';
+
 var C = Ember.computed;
 
 export default Ember.ObjectController.extend({
@@ -9,7 +11,12 @@ export default Ember.ObjectController.extend({
   running: C.bool('currentSession'),
   standby: C.not('running'),
 
-  sessions: C.alias('controllers.sessions.sessions'),
+  sessions: Ember.computed('controllers.sessions.sessionsGroupedByDay.length', function() {
+    var groups = this.get('controllers.sessions.sessionsGroupedByDay');
+    var todayString = formatDate(new Date());
+    var todayGroup = groups.findBy('key', todayString);
+    return todayGroup ? todayGroup.get('content') : [];
+  }),
 
   backgroundEffect: function() {
     this.set('changed', true);
