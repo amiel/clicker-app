@@ -13,9 +13,9 @@ export function initialize(container, application) {
     modalTitle: 'Clicker App',
   });
 
-  application.register('service:framework7', framework7App, { instantiate: false });
+  application.register('service:framework7App', framework7App, { instantiate: false });
   // application.inject('route', 'framework7', 'service:framework7');
-  // application.inject('controller', 'framework7', 'service:framework7');
+  application.inject('controller', 'framework7App', 'service:framework7App');
 }
 
 export default {

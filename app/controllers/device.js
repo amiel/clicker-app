@@ -40,10 +40,17 @@ export default Ember.ObjectController.extend({
       });
       this.set('currentSession', session);
     },
+
     stopSession: function() {
       var session = this.get('currentSession');
       session.stop();
       this.set('currentSession', null);
+    },
+
+    disconnect: function() {
+      window.confirm("Are you sure you want to disconnect?", function() {
+        Ember.run(this, 'sendAction', 'disconnect');
+      });
     }
   }
 });
