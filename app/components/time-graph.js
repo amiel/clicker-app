@@ -18,14 +18,16 @@ export default Ember.Component.extend({
       .width(320)
       .start(this.get('startAt'))
       .end(this.get('stopAt'))
-      .eventLineColor('#00ff0033')
-      .eventColor('#ff00ffff')
+      // .eventLineColor('#00ff0033')
+      // .eventColor('#ff00ffff')
       .hasDelimiter(false)
       .hasTopAxis(false)
       .hasBottomAxis(false)
       .margin({ top: 20, left: 20, bottom: 20, right: 20 });
 
     d3.select(el).datum(data).call(eventDropsChart);
+
+    this.$('svg').attr({ xmlns: "http://www.w3.org/2000/svg", version: "1.1" });
   }.observes('times', 'startAt', 'stopAt')
 
 });
