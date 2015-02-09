@@ -15,7 +15,9 @@ function stubBluetoothStuff() {
       }, 500);
     },
     connect: function(id, onConnect /*, onError */) {
-      onConnect(stubDevice);
+      window.setTimeout(function() {
+        onConnect(stubDevice);
+      }, 500);
     },
     notify: function(id, service, characteristic, onData /*, onError */) {
       var callback = onData;

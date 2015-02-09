@@ -67,6 +67,7 @@ export default Ember.Route.extend({
     clear: function() {
       this.set('controller.messages', []);
     },
+
     disconnect: function() {
       var self = this;
       var id = this.get('deviceId');

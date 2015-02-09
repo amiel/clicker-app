@@ -48,9 +48,9 @@ export default Ember.ObjectController.extend({
     },
 
     disconnect: function() {
-      window.confirm("Are you sure you want to disconnect?", function() {
-        Ember.run(this, 'sendAction', 'disconnect');
-      });
+      if (window.confirm("Are you sure you want to disconnect?")) {
+        Ember.run(this.get('target'), 'send', 'disconnect');
+      }
     }
   }
 });
