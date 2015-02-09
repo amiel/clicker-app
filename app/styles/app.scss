@@ -58,12 +58,6 @@ body {
 a{ cursor: pointer; }
 
 
-
-
-
-
-
-
 .zoom {
   fill: transparent;
   cursor: pointer;
@@ -89,5 +83,7 @@ a{ cursor: pointer; }
 }
 
 .graph-body .line circle {
-  opacity: 0.1;
+  stroke: #007aff;
+  fill: #007aff;
+  opacity: 0.3;
 }

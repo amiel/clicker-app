@@ -12,7 +12,7 @@ export default Ember.Component.extend({
   renderGraph: function() {
     var el = this.$()[0];
 
-    var data = [ { name: "", dates: this.get('times') } ];
+    var data = [ { name: "clicks", dates: this.get('times') } ];
 
     var eventDropsChart = d3.chart.eventDrops()
       .width(320)
