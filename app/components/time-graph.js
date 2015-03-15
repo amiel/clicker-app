@@ -23,11 +23,15 @@ export default Ember.Component.extend({
       .hasDelimiter(false)
       .hasTopAxis(false)
       .hasBottomAxis(false)
-      .margin({ top: 20, left: 20, bottom: 20, right: 20 });
+      // No need for bottom margin; there's the zoop thing
+      .margin({ top: 20, left: 20, bottom: 0, right: 20 });
 
     d3.select(el).datum(data).call(eventDropsChart);
 
     this.$('svg').attr({ xmlns: "http://www.w3.org/2000/svg", version: "1.1" });
+
+    // HACK: hide the zoop thing
+    this.$('.zoom').hide();
   }.observes('times', 'startAt', 'stopAt')
 
 });
