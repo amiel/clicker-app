@@ -2,14 +2,14 @@ import Ember from 'ember';
 
 import { formatDate } from 'clicker-app/helpers/format-date';
 
-var C = Ember.computed;
+var computed = Ember.computed;
 
 export default Ember.ObjectController.extend({
   needs: 'sessions'.w(),
   currentSession: null,
 
-  running: C.bool('currentSession'),
-  standby: C.not('running'),
+  running: computed.bool('currentSession'),
+  standby: computed.not('running'),
 
   sessions: Ember.computed('controllers.sessions.sessionsGroupedByDay.length', function() {
     var groups = this.get('controllers.sessions.sessionsGroupedByDay');
