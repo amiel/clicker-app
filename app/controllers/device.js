@@ -39,12 +39,15 @@ export default Ember.ObjectController.extend({
         name: this.get('sessionName')
       });
       this.set('currentSession', session);
+
+      window.plugins.insomnia.keepAwake();
     },
 
     stopSession: function() {
       var session = this.get('currentSession');
       session.stop();
       this.set('currentSession', null);
+      window.plugins.insomnia.allowSleepAgain();
     },
 
     disconnect: function() {
