@@ -30,10 +30,10 @@
     </feature>
     <name>ClickerApp</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+      BLE receiver for the clicker box (http://github.com/amiel/clicker-box)
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="amiel.martin@gmail.com" href="http://amielmartin.com">
+      Amiel Martin
     </author>
     <content src="index.html" />
     <access origin="*" />
