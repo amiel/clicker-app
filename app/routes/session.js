@@ -7,7 +7,6 @@ export default Ember.Route.extend(BackButtonRoute, {
     return this.store.find('session', params.session_id);
   },
 
-
   actions: {
     destroy: function() {
       if (window.confirm("Are you sure you want to delete this session?")) {

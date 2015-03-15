@@ -7,6 +7,13 @@ export default Ember.ObjectController.extend({
     return this.get('model.clicks').mapBy('time').map(function(string) {
       return new Date(string);
     });
-  })
+  }),
 
+  observeNotes: Ember.observer('model.notes', function() {
+    Ember.run.debounce(this, this.saveNotes, 1000);
+  }),
+
+  saveNotes: function() {
+    this.get('model').save();
+  }
 });

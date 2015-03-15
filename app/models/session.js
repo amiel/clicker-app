@@ -9,6 +9,7 @@ export default DS.Model.extend({
   name: attr(),
   startAt: attr('date'),
   stopAt: attr('date'),
+  notes: attr(),
   clicks: hasMany('clicks'),
 
   done: Ember.computed.bool('stopAt'),
