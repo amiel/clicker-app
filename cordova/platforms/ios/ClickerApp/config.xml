@@ -25,6 +25,9 @@
     <feature name="Console">
         <param name="ios-package" value="CDVLogger" />
     </feature>
+    <feature name="Insomnia">
+        <param name="ios-package" value="Insomnia" />
+    </feature>
     <name>ClickerApp</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

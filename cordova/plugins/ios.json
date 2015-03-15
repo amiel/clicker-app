@@ -27,6 +27,10 @@
                         {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Insomnia\"><param name=\"ios-package\" value=\"Insomnia\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -38,6 +42,9 @@
             "PACKAGE_NAME": "com.amiel.ClickerApp"
         },
         "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.amiel.ClickerApp"
+        },
+        "nl.x-services.plugins.insomnia": {
             "PACKAGE_NAME": "com.amiel.ClickerApp"
         }
     },
